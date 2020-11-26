@@ -1,0 +1,30 @@
+<%= link_to journals_path do %>
+    <i class="fas fa-toilet-paper fa-2x"></i>
+<% end %>
+
+<%= form_with model: @journal, local: true do |form| %>
+ 
+  <% if @journal.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@journal.errors.count, "error") %> prohibited
+        this journal from being saved:
+      </h2>
+      <ul>
+        <% @journal.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label :owner %><br>
+    <%= form.text_field :owner %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>

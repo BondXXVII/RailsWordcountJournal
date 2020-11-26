@@ -1,0 +1,71 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .flier {
+	pointer-events: none;
+}
+
+.flier > * {
+    animation: fly 100s linear infinite;
+    pointer-events: none !important;
+	top: 0;
+	left: 0;
+	transform: translateX(-120%) translateY(-120%) rotateZ(0);
+	position: fixed;
+	animation-delay: 12s;
+	z-index: 999999;
+}
+
+@keyframes fly {
+	98.001%, 0% {
+    display: block;
+	transform: translateX(-200%) translateY(100vh) rotateZ(0deg)}
+	15% {
+		transform: translateX(100vw) translateY(-100%) rotateZ(0deg)}
+	15.001%, 18% {
+		transform: translateX(100vw) translateY(-30%) rotateZ(0deg)}
+	40% {
+		transform: translateX(-200%) translateY(3vh) rotateZ(-0deg)}
+	40.001%, 43% {
+		transform: translateX(-200%) translateY(-100%) rotateZ(-0deg)}
+	65% {
+		transform: translateX(100vw) translateY(50vh) rotateZ(0deg)}
+	65.001%, 68% {
+		transform: translateX(20vw) translateY(-200%) rotateZ(0deg)}
+	95% {
+		transform: translateX(10vw) translateY(100vh) rotateZ(0deg)}
+}
+
+
+@keyframes itflews {
+    0%
+    {
+        left: -11emx;
+    }
+    100%
+    {
+        left: 227%;
+    }
+}
+
+.dabird{
+    position: fixed;
+    top: 5em;
+    left: -35em;
+    z-index: 999;
+    transform: rotate(30deg);
+    /* animation: itflews 55s linear infinite; */
+}

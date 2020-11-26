@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wordcountrr</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4afdd5b945.js" crossorigin="anonymous"></script>
+  </head>
+  <style>
+    html {
+      /* background-image: url(https://wallpapertag.com/wallpaper/full/6/c/7/420211-wallpaper-old-paper-2362x1434-720p.jpg); */
+      /* background-image: url(https://www.webivm.com/wp-content/uploads/Old-Paper-Background.jpg); */
+      background-image: url(http://img1.joyreactor.com/pics/post/full/art-scenery-gif-waterfall-3368027.gif);
+      background-repeat: no-repeat;
+      background-size: initial;
+      background-attachment: fixed;
+      z-index: -2;
+      background-position-x: right;
+      onclick: return confirm('yes');
+      cursor: url(/assets/leafsel.cur),auto;
+    }
+    .wfall {
+      position: fixed;
+      z-index: -1;
+      /* transform: scaleX(-1); */
+      width: 120em;
+      height: 68em;
+      margin-top: -38em;
+      margin-left: -45em;
+      opacity: 20%;
+    }
+    body {margin-left: 10em;}
+    .box {width: 40em;}
+    .logo {
+      width: 4.5em;
+      length: 4.5em;
+      margin-left: -8em;
+      position: fixed;
+      margin-top: -1.5em;
+    }
+    .apage {
+      margin-top: 0em;
+      margin-bottom: .2em;
+    }
+    .bpage {
+      margin-top: 0em;
+      margin-bottom: 2em;
+      max-width:35em;
+      word-wrap:break-word;
+    }
+    .bign {color: red;}
+    .ptext {font-family: 'Cedarville Cursive', cursive;}
+    .playr {
+      margin-left: 15em;
+      margin-top: -5.9em;
+      position: fixed;
+    }
+    .paper {
+      z-index: -1;
+      position: fixed;
+      margin-left: -13em;
+      margin-top: -7em;
+    }
+    .invpaper {
+      z-index: 2;
+      position: fixed;
+      width: 83em;
+      left: 50em;
+      top: 0em;
+      opacity: 0;
+    }
+    .counttracker {position: fixed; margin-top: -3.2em;}
+    .stuff {
+      margin-top: 6em;
+      z-index: 1;
+      overflow-y: scroll;
+      height: 55em;
+      margin-left: -3em;
+    }
+    .fa-chevron-circle-left{color: darkgreen;} .fa-book{color:darkred;} .fa-book-open{color:darkgreen} .fa-trash-alt{color:grey} 
+    .fa-toilet-paper{color:darkred; position: absolute; top: 0.6em; left: 1.5em;} .fa-toilet-paper:hover{color:white;} .fa-toilet-paper:active{transform: translateY(2px);}
+    .fa-chevron-circle-left:hover{color: white;} .fa-book:hover{color:white;} .fa-book-open:hover{color:white} .fa-trash-alt:hover{color:white}
+    .fa-chevron-circle-left:active{transform: translateY(2px);} .fa-book:active{transform: translateY(2px);} 
+      .fa-book-open:active{transform: translateY(2px);} .fa-trash-alt:active{transform: translateY(2px);}
+    a{color:black;} a:hover{color:white; cursor:url(/assets/leafsel.cur), auto;}
+    /* .head:hover{cursor: default} */
+  </style>
+  <script>
+    function wordCounter(text) {
+      var count = document.getElementById('count');
+      var input = document.getElementById('input');
+      var text = input.value;
+      var wordCount = 0;
+      for (var i = 0; i <= text.length; i++) {
+        if (text.charAt(i) == ' ') {
+          wordCount++;
+        }
+      }
+      count.innerText = wordCount;
+    }
+    
+    function flythebird() {
+      document.getElementById("dabird").style.animation = "itflews 14s linear 1";
+      setTimeout(() => {birdbegone();}, 15000);}
+    function birdbegone() {
+      document.getElementById("dabird").style.animation = "";
+      document.getElementById("dabird").style.animationDuration = "";}
+  </script>  
+  <body>
+    <header><a  class="head" onclick="return confirm('If you found this.. you the man...or no take that back. Im the man! Now go write something.')"><img src="https://seeklogo.com/images/F/face-beard-logo-9206230834-seeklogo.com.png" class='logo' ></a></header>
+    <audio controls class="playr" id='' src= "/assets/waterflow.mp3">
+      Your browser does not support the
+      <code>audio</code> element.
+    </audio>
+    <img src="/assets/scroll.png" class="paper">
+    <img src="/assets/scroll.png" class="invpaper"  onclick="flythebird()" onlick="return confirm('well this is suppose to control the bird or play water....but that just didnt happen. Sooo my B.')">
+    <div class="stuff"><%= yield %></div>
+    <%
+=begin%>
+ <button onclick="window.location.href='/journals'"><i class="fas fa-toilet-paper"></i></button> 
+<%
+=end%>
+    <img src="https://i.imgur.com/R7Nn660.gif" class="wfall">
+    <div class="flier"><img src="http://www.animationsoftware7.com/img/agifs/leaf_fall_4.gif" style="width: 111em;"></div>
+    <div id="dabird" class="dabird" onclick="return confirm('you got me..good job I guess')"><img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/15ba3c52-fae3-4469-b761-ff782a879bf8/dcsa6sq-478751f5-e56c-417a-a4d9-223438b3a252.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMTViYTNjNTItZmFlMy00NDY5LWI3NjEtZmY3ODJhODc5YmY4XC9kY3NhNnNxLTQ3ODc1MWY1LWU1NmMtNDE3YS1hNGQ5LTIyMzQzOGIzYTI1Mi5naWYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.eg5gKBZGmC3oJzYoCPccn1QdGfaZLuxjysp0Q4j3kwI"></div>
+  </body>
+</html>

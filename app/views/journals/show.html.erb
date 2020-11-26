@@ -1,0 +1,48 @@
+<%= link_to journals_path do %>
+    <i class="fas fa-toilet-paper fa-2x"></i>
+<% end %>
+
+<h2 class="counttracker">Word Count: <span id="count" class="bign">0</span></h2>
+
+<p>
+  <strong><h2 style="display: inline">Journal: </h2></strong>
+  <strong><%= @journal.owner %></strong>
+</p>
+
+<h2>Pages</h2>
+<% @journal.pages.each do |page| %>
+  <p  class="apage">
+    <strong class="bign">PageTitle:</strong>
+    <strong><%= page.pagetitle %></strong>
+  </p>
+ 
+  <p  class="bpage">
+    <strong class="bign">Body:</strong>
+    <strong><span class="ptext"><%= page.body %></span></strong>
+  </p>
+<% end %>
+
+<h2>Add a page:</h2>
+<%= form_with(model: [ @journal, @journal.pages.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :pagetitle %>
+    <%
+=begin%>
+ <%= form.text_field :pagetitle, id: "input" %> 
+<%
+=end%>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <textarea class="box" id="input" rows="25" name="page[body]"></textarea>
+    <script> input.addEventListener('keyup', function(e){ wordCounter(e.target.value); }); </script>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to journals_path do %>
+    <i class="fas fa-chevron-circle-left fa-lg"></i>
+<% end %>

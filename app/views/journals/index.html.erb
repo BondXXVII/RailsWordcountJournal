@@ -1,0 +1,38 @@
+<h1 style="margin-left: 5em; color: darkred">List of Journals</h1>
+ 
+<span style="margin-left: 13em; color: red"><%= link_to 'New ', new_journal_path %><%= link_to new_journal_path do %><i class="fas fa-book fa-2x"></i><%end%><%= link_to 'Journal', new_journal_path %></span>
+
+<br>
+<br>
+<table style="margin-left: 10em">
+  <tr>
+    <th>Journals</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>&nbsp;View</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>Delete</th>
+  </tr>
+ 
+  <%
+=begin%>
+ <% @journals.each do |journal| %>
+    <tr>
+      <td><%= journal.owner %></td>
+      <td><%= link_to 'Show', journal_path(journal) %></td>
+      <td><%= link_to 'Destroy', journal_path(journal), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %> 
+<%
+=end%>
+
+    <% @journals.each do |journal| %>
+        <tr>
+            <td><%= journal.owner %></td>
+            <td></td>
+            <td>&nbsp;&nbsp;&nbsp;<%= link_to journal_path(journal) do %><i class="fas fa-book-open fa-lg"></i><%end%></td>
+            <td></td>
+            <td>&nbsp;&nbsp;&nbsp;<%= link_to journal_path(journal), method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fas fa-trash-alt fa-lg"></i><%end%></td>
+        </tr>
+    <% end %>
+
+</table>
